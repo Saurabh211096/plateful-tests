@@ -1,0 +1,21 @@
+{
+  "_note": "Spice Route Kitchen is the automation restaurant on QA. Please do not change its menu or prices.",
+  "main": {
+    "name": "Spice Route Kitchen",
+    "slug": "spice-route-kitchen-baner",
+    "items": {
+      "paneerTikka": { "name": "Paneer Tikka", "price": 279 },
+      "chickenTikka": { "name": "Chicken Tikka", "price": 319 },
+      "butterChicken": { "name": "Butter Chicken", "price": 349 },
+      "dalMakhani": { "name": "Dal Makhani", "price": 249 },
+      "butterNaan": { "name": "Butter Naan", "price": 55 },
+      "vegPulao": { "name": "Veg Pulao", "price": 199 },
+      "gulabJamun": { "name": "Gulab Jamun (2 pcs)", "price": 99 },
+      "masalaChaas": { "name": "Masala Chaas", "price": 69 }
+    },
+    "packagingFee": 20
+  },
+  "second": { "name": "Dosa Corner", "slug": "dosa-corner-aundh", "item": "Masala Dosa" },
+  "withUnavailableItem": { "name": "Biryani Junction", "slug": "biryani-junction-wakad", "item": "Hyderabadi Haleem" },
+  "closed": { "name": "Malvani Masala", "slug": "malvani-masala-shivajinagar" }
+}
