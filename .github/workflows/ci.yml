@@ -1,0 +1,29 @@
+# CI for the test project (set up by Amit, DevOps).
+# Runs on every push to main and on every pull request:
+#   1. TypeScript type check
+#   2. Playwright loads every test file (catches broken imports and syntax errors)
+# The full end-to-end run needs the QA environment, so it runs on the team's machines
+# (nightly run by DevOps, and locally before you raise a PR), not here.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: List tests
+        run: npx playwright test --list
