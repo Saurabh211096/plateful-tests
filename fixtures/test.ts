@@ -5,6 +5,7 @@ import { HomePage } from '../pages/HomePage';
 import { SearchPage } from '../pages/SearchPage';
 import { RestaurantPage } from '../pages/RestaurantPage';
 import { CartPage } from '../pages/CartPage';
+import { OrderPage } from '../pages/OrderPage';
 
 type Fixtures = {
   api: ApiClient;
@@ -17,6 +18,7 @@ type Fixtures = {
   searchPage: SearchPage;
   restaurantPage: RestaurantPage;
   cartPage: CartPage;
+  orderPage: OrderPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -35,6 +37,7 @@ export const test = base.extend<Fixtures>({
   searchPage: async ({ page }, use) => use(new SearchPage(page)),
   restaurantPage: async ({ page }, use) => use(new RestaurantPage(page)),
   cartPage: async ({ page }, use) => use(new CartPage(page)),
+  orderPage: async ({ page }, use) => use(new OrderPage(page)),
 });
 
 export { expect };

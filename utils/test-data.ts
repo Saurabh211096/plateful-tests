@@ -1,6 +1,7 @@
 import restaurants from '../test-data/restaurants.json';
+import accounts from '../test-data/accounts.json';
 
-export { restaurants };
+export { restaurants, accounts };
 
 /** A random mobile number in the automation range (97xxxxxxxx), so tests never clash with shared accounts. */
 export function randomPhone(): string {

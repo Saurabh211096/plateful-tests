@@ -1,8 +1,9 @@
 import { APIRequestContext, expect } from '@playwright/test';
 import { env } from './env';
-import { randomPhone, restaurants, testAddress } from './test-data';
+import { accounts, randomPhone, restaurants, testAddress } from './test-data';
 
 export type TestCustomer = { phone: string; name: string; token: string; addressId: number };
+export type PlacedOrder = { orderNo: string; total: number; paymentRef?: string };
 type MenuItem = { id: number; name: string; price: number; isAvailable: boolean };
 
 /**
@@ -10,6 +11,8 @@ type MenuItem = { id: number; name: string; price: number; isAvailable: boolean 
  * (customers, carts, orders) so that UI tests only check the screen under test.
  */
 export class ApiClient {
+  private staffTokens: Record<string, string> = {};
+
   constructor(private request: APIRequestContext) {}
 
   private async call<T = any>(method: string, path: string, body?: unknown, token?: string): Promise<T> {
@@ -68,5 +71,31 @@ export class ApiClient {
 
   async cart(c: TestCustomer) {
     return this.call('GET', '/api/v1/cart', undefined, c.token);
+  }
+
+  /** Places a cash-on-delivery order from Spice Route Kitchen. */
+  async placeCodOrder(c: TestCustomer, items: { name: string; qty?: number }[] = [{ name: restaurants.main.items.paneerTikka.name }]): Promise<PlacedOrder> {
+    await this.clearCart(c);
+    for (const it of items) await this.addToCart(c, it.name, it.qty ?? 1);
+    const res = await this.call<{ order: { orderNo: string; bill: { total: number } } }>('POST', '/api/v1/orders', { addressId: c.addressId, paymentMethod: 'cod' }, c.token);
+    return { orderNo: res.order.orderNo, total: res.order.bill.total };
+  }
+
+  async order(c: TestCustomer, orderNo: string) {
+    return this.call('GET', `/api/v1/orders/${orderNo}`, undefined, c.token);
+  }
+
+  // ---------- staff ----------
+  async staffLogin(role: 'partner' | 'support' | 'admin'): Promise<string> {
+    if (!this.staffTokens[role]) {
+      const acc = accounts[role];
+      const r = await this.call<{ token: string }>('POST', '/api/v1/auth/staff/login', { email: acc.email, password: acc.password });
+      this.staffTokens[role] = r.token;
+    }
+    return this.staffTokens[role];
+  }
+
+  async partnerAccept(orderNo: string, prepMinutes = 20) {
+    return this.call('POST', `/api/v1/partner/orders/${orderNo}/accept`, { prepMinutes }, await this.staffLogin('partner'));
   }
 }
