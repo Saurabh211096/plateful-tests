@@ -5,6 +5,7 @@ import { HomePage } from '../pages/HomePage';
 import { SearchPage } from '../pages/SearchPage';
 import { RestaurantPage } from '../pages/RestaurantPage';
 import { CartPage } from '../pages/CartPage';
+import { PaymentPage } from '../pages/PaymentPage';
 import { OrderPage } from '../pages/OrderPage';
 
 type Fixtures = {
@@ -18,6 +19,7 @@ type Fixtures = {
   searchPage: SearchPage;
   restaurantPage: RestaurantPage;
   cartPage: CartPage;
+  paymentPage: PaymentPage;
   orderPage: OrderPage;
 };
 
@@ -37,6 +39,7 @@ export const test = base.extend<Fixtures>({
   searchPage: async ({ page }, use) => use(new SearchPage(page)),
   restaurantPage: async ({ page }, use) => use(new RestaurantPage(page)),
   cartPage: async ({ page }, use) => use(new CartPage(page)),
+  paymentPage: async ({ page }, use) => use(new PaymentPage(page)),
   orderPage: async ({ page }, use) => use(new OrderPage(page)),
 });
 

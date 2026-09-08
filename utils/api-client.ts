@@ -81,6 +81,15 @@ export class ApiClient {
     return { orderNo: res.order.orderNo, total: res.order.bill.total };
   }
 
+  /** Places a UPI order and pays it with the PayEase success UPI ID. */
+  async placePaidOrder(c: TestCustomer, itemName = restaurants.main.items.butterChicken.name, qty = 1): Promise<PlacedOrder> {
+    await this.clearCart(c);
+    await this.addToCart(c, itemName, qty);
+    const res = await this.call<{ order: { orderNo: string; bill: { total: number } }; payment: { ref: string } }>('POST', '/api/v1/orders', { addressId: c.addressId, paymentMethod: 'upi' }, c.token);
+    await this.call('POST', `/api/v1/payments/${res.payment.ref}/complete`, { upiId: 'success@payease' });
+    return { orderNo: res.order.orderNo, total: res.order.bill.total, paymentRef: res.payment.ref };
+  }
+
   async order(c: TestCustomer, orderNo: string) {
     return this.call('GET', `/api/v1/orders/${orderNo}`, undefined, c.token);
   }

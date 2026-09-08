@@ -1,0 +1,14 @@
+{
+  "_note": "PayEase test mode values. They only work on QA.",
+  "upi": {
+    "success": "success@payease",
+    "failure": "failure@payease",
+    "pending": "pending@payease"
+  },
+  "cards": {
+    "visaSuccess": { "number": "4111 1111 1111 1111", "expiry": "12/30", "cvv": "123", "name": "QA Automation" },
+    "mastercardSuccess": { "number": "5555 5555 5555 4444", "expiry": "12/30", "cvv": "123", "name": "QA Automation" },
+    "declined": { "number": "4000 0000 0000 0002", "expiry": "12/30", "cvv": "123", "name": "QA Automation" },
+    "insufficientFunds": { "number": "4000 0000 0000 9995", "expiry": "12/30", "cvv": "123", "name": "QA Automation" }
+  }
+}
