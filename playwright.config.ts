@@ -1,6 +1,12 @@
 import { defineConfig, devices } from '@playwright/test';
 import { env } from './utils/env';
 
+/**
+ * Plateful automated tests.
+ * - "desktop" runs every test on a laptop-size Chrome window.
+ * - "phone" runs only the tests tagged @phone, on a Pixel 7 screen (412 x 915).
+ * See docs/automation-guide.md before adding tests.
+ */
 export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
@@ -20,6 +26,11 @@ export default defineConfig({
     {
       name: 'desktop',
       use: { ...devices['Desktop Chrome'], viewport: { width: 1366, height: 768 } },
+    },
+    {
+      name: 'phone',
+      use: { ...devices['Pixel 7'] },
+      grep: /@phone/,
     },
   ],
 });

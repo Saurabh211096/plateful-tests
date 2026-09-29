@@ -4,7 +4,7 @@ import { restaurants } from '../../utils/test-data';
 const items = restaurants.main.items;
 
 test.describe('Cart', () => {
-  test('quantity can be increased and decreased', async ({ loggedInPage, restaurantPage }) => {
+  test('quantity can be increased and decreased @phone', async ({ loggedInPage, restaurantPage }) => {
     await restaurantPage.open(restaurants.main.slug);
     await restaurantPage.add(items.paneerTikka.name);
     await restaurantPage.increase(items.paneerTikka.name);

@@ -5,6 +5,7 @@
   "description": "Automated tests for Plateful (Kestrel Bay Technologies QA team)",
   "scripts": {
     "test": "playwright test",
+    "test:phone": "playwright test --project=phone",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit"
   },
