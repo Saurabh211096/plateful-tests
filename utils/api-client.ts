@@ -107,4 +107,13 @@ export class ApiClient {
   async partnerAccept(orderNo: string, prepMinutes = 20) {
     return this.call('POST', `/api/v1/partner/orders/${orderNo}/accept`, { prepMinutes }, await this.staffLogin('partner'));
   }
+
+  async partnerReady(orderNo: string) {
+    return this.call('POST', `/api/v1/partner/orders/${orderNo}/ready`, undefined, await this.staffLogin('partner'));
+  }
+
+  /** QA tool: moves an order to its next status (as the restaurant or rider would). */
+  async advanceOrder(orderNo: string) {
+    return this.call('POST', `/api/v1/qa/orders/${orderNo}/advance`, undefined, await this.staffLogin('admin'));
+  }
 }

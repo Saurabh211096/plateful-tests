@@ -1,5 +1,6 @@
 {
   "_note": "QA-only test accounts (fake data). These do not work in Production.",
   "partner": { "email": "partner.spiceroute@plateful.test", "password": "Partner@123", "restaurant": "Spice Route Kitchen" },
+  "support": { "email": "support.qa2@plateful.test", "password": "Support@123" },
   "admin": { "email": "admin.qa@plateful.test", "password": "Admin@123" }
 }
