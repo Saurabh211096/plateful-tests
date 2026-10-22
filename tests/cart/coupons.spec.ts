@@ -29,5 +29,12 @@ test.describe('Coupons', () => {
     void loggedInPage;
   });
 
-});
+  // Boundary: the minimum order value itself must be accepted
+  test.only('TREAT40 applies when the item total is exactly ₹199', async ({ loggedInPage, api, customer, cartPage }) => {
+    await api.addToCart(customer, items.vegPulao.name); // exactly 199
+    await cartPage.open();
+    await cartPage.applyCoupon('TREAT40');
+    await expect(cartPage.couponApplied).toContainText('TREAT40 applied');
+    void loggedInPage;
+  });
 });
