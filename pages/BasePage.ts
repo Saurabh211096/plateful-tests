@@ -6,7 +6,7 @@ export class BasePage {
   readonly appVersion: Locator;
 
   constructor(protected readonly page: Page) {
-    this.cartCount = page.locator('.cart-count');
+    this.cartCount = page.getByTestId('cart-count');
     this.envStrip = page.getByTestId('env-strip');
     this.appVersion = page.getByTestId('app-version');
   }
