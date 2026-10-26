@@ -30,7 +30,7 @@ test.describe('Coupons', () => {
   });
 
   // Boundary: the minimum order value itself must be accepted
-  test.only('TREAT40 applies when the item total is exactly ₹199', async ({ loggedInPage, api, customer, cartPage }) => {
+  test('TREAT40 applies when the item total is exactly ₹199', async ({ loggedInPage, api, customer, cartPage }) => {
     await api.addToCart(customer, items.vegPulao.name); // exactly 199
     await cartPage.open();
     await cartPage.applyCoupon('TREAT40');
