@@ -7,7 +7,9 @@
     "test": "playwright test",
     "test:phone": "playwright test --project=phone",
     "report": "playwright show-report",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/check-test-hygiene.mjs",
+    "ci": "npm run lint && npm run typecheck && playwright test --list"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
