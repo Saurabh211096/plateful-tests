@@ -5,7 +5,9 @@
   "description": "Automated tests for Plateful (Kestrel Bay Technologies QA team)",
   "scripts": {
     "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke --project=desktop",
     "test:phone": "playwright test --project=phone",
+    "test:api": "playwright test tests/api",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit",
     "lint": "node scripts/check-test-hygiene.mjs",
