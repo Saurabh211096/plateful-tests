@@ -44,7 +44,7 @@ For cards, use any future expiry (for example 12/30), any 3-digit CVV and any na
 
 ## Coupons on QA
 
-`WELCOME75` (flat ₹75 off on ₹299+), `TREAT40` (flat ₹40 off on ₹199+, 3 uses), `DUSSEHRA100` (expired, for negative tests).
+`WELCOME75` (flat ₹75 off on ₹299+), `TREAT40` (flat ₹40 off on ₹199+, 3 uses), `DUSSEHRA100` (expired, for negative tests). New in 1.1: `PLATE50` and `FIRSTBITE`.
 
 ## The automation restaurant
 

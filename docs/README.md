@@ -24,6 +24,7 @@ How the Plateful QA team at Kestrel Bay works. Each page is short. Read a page w
 | [Severity and priority](severity-and-priority.md) | How bad is it, and how soon to fix it |
 | [Release process](release-process.md) | Code freeze, regression, go/no-go, Production checks |
 | [Privacy and test data](privacy-and-test-data.md) | Customer data, masking screenshots, cleaning up |
+| [AI usage policy](ai-usage-policy.md) | How to use the company's AI seat safely |
 
 **Automation**
 
