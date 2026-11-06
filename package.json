@@ -14,7 +14,7 @@
     "ci": "npm run lint && npm run typecheck && playwright test --list"
   },
   "devDependencies": {
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.65.0",
     "@types/node": "^22.10.0",
     "typescript": "~5.9.3"
   }
