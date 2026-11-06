@@ -28,8 +28,11 @@ export class OrderPage extends BasePage {
     await this.page.goto(`/orders/${orderNo}`);
   }
 
-  async cancel() {
+  /** Cancels the order. Since 1.1 the customer must choose a reason. */
+  async cancel(reason = 'Ordered by mistake') {
     await this.cancelButton.click();
-    await this.page.getByRole('dialog').getByRole('button', { name: 'Yes, cancel order' }).click();
+    const dialog = this.page.getByRole('dialog');
+    await dialog.getByRole('radio', { name: reason }).check();
+    await dialog.getByRole('button', { name: 'Yes, cancel order' }).click();
   }
 }

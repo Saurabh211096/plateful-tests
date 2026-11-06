@@ -19,5 +19,9 @@ test.describe('Search', () => {
     await expect(page.getByText('No restaurants found for "xyzqwe"')).toBeVisible();
   });
 
-});
+  // Regression check for the 1.0 bug: a space after the text returned nothing (fixed in 1.1)
+  test('search ignores spaces before and after the text @regression', async ({ searchPage }) => {
+    await searchPage.open('paneer ', 'dishes');
+    await expect(searchPage.dishResults.first()).toBeVisible();
+  });
 });

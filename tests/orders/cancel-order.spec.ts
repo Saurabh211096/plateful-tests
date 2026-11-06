@@ -4,8 +4,17 @@ test.describe('Cancel order', () => {
   test('customer can cancel before the restaurant accepts', async ({ loggedInPage, api, customer, orderPage }) => {
     const order = await api.placeCodOrder(customer);
     await orderPage.open(order.orderNo);
-    await orderPage.cancel();
+    await orderPage.cancel('Ordered by mistake');
     await expect(orderPage.status).toHaveText('Cancelled');
+    void loggedInPage;
+  });
+
+  test('a prepaid order is refunded in full when cancelled', async ({ loggedInPage, api, customer, orderPage }) => {
+    const order = await api.placePaidOrder(customer);
+    await orderPage.open(order.orderNo);
+    await orderPage.cancel('Delivery time is too long');
+    await expect(orderPage.status).toHaveText('Cancelled');
+    await expect(orderPage.refundRows.first()).toContainText(`₹${order.total.toLocaleString('en-IN')}`);
     void loggedInPage;
   });
 
