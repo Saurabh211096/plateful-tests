@@ -49,7 +49,7 @@ export class CartPage extends BasePage {
   }
 
   async proceedToPay() {
-    await this.page.getByRole('button', { name: 'Proceed to pay' }).click();
+    await this.page.getByRole('button', { name: 'Place order' }).click();
   }
 
   /** Reads a bill amount like "₹1,234" as a number. */
