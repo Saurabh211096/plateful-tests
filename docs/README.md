@@ -22,6 +22,8 @@ How the Plateful QA team at Kestrel Bay works. Each page is short. Read a page w
 | [Test case template](test-case-template.md) | How we write test cases in Excel |
 | [Bug report template](bug-report-template.md) | How we write a bug a developer can reproduce |
 | [Severity and priority](severity-and-priority.md) | How bad is it, and how soon to fix it |
+| [Short test plan and test summary](test-plan-and-summary.md) | The two comments QA writes on every story |
+| [Checking through the API](api-testing.md) | Postman: requests, status codes, logging in with a token |
 | [Release process](release-process.md) | Code freeze, regression, go/no-go, Production checks |
 | [Privacy and test data](privacy-and-test-data.md) | Customer data, masking screenshots, cleaning up |
 | [AI usage policy](ai-usage-policy.md) | How to use the company's AI seat safely |
